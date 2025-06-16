@@ -1,11 +1,12 @@
 import express from 'express';
-import { getAllProducts } from '../controller/productController.js';
+import { createProducts, getAllProducts, updateProduct } from '../controller/productController.js';
 
 const router = express.Router();
 
 //Routes
 
 // router.route("/api/v1/products").get(getAllProducts);  // it will not work because we give the starting path in app.js we have to give last path
-router.route("/products").get(getAllProducts);
+router.route("/products").get(getAllProducts).post(createProducts);
+router.route("/product/:id").put(updateProduct);
 
 export default router;
