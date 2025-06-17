@@ -11,8 +11,15 @@ const PORT = process.env.PORT || 3000;
 // app.route("/api/v1/products").get(getAllProducts); // use this is good practice but we are using routes file but here .get for get method
 
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
 
-
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log('Shutting down the server due to unhandled promise rejection');
+    server.close(() => {
+        process.exit(1) // Exit the process with failure code
+    })
+})
