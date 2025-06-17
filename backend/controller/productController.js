@@ -1,6 +1,9 @@
-import Product from "../models/productModel.js";
-import HandleError from "../utils/handleError.js";
 import handleAsyncError from "../middleware/handleAsyncError.js";
+import Product from "../models/productModel.js";
+import APIFunctionality from "../utils/apiFunctionality.js";
+import HandleError from "../utils/handleError.js";
+
+//http://localhost:8000/api/v1/product/684ff74db9884d81b687b43f?Keyword=shirt
 
 //1️⃣ Create Product
 export const createProducts = handleAsyncError(async (req, res, next) => {
@@ -13,7 +16,9 @@ export const createProducts = handleAsyncError(async (req, res, next) => {
 
 //2️⃣ Get all Products
 export const getAllProducts = handleAsyncError(async (req, res, next) => {
-    const products = await Product.find()
+    const apiFunctionality = new APIFunctionality(Product.find(),req.query).search();
+
+    const products = await apiFunctionality.query
     res.status(200).json({
         success: true,
         products
