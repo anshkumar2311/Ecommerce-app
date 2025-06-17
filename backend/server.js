@@ -6,6 +6,13 @@ dotenv.config({ path: 'backend/config/config.env' });
 
 connectMongoDatabase(); // connect to database
 
+//Handle uncaught exceptions
+process.on('uncaughtException', (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log('Shutting down the server due to uncaught exception');
+    process.exit(1);
+});
+
 const PORT = process.env.PORT || 3000;
 
 // app.route("/api/v1/products").get(getAllProducts); // use this is good practice but we are using routes file but here .get for get method
@@ -14,6 +21,7 @@ const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
+
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
