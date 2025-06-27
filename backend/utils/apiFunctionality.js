@@ -24,6 +24,13 @@ class APIFunctionality {
         this.query = this.query.find(queryCopy);
         return this;
     }
+
+    pagination(resultsPerPage) {
+        const currentPage = this.queryStr.page || 1;
+        const skip = resultsPerPage * (currentPage - 1);
+        this.query = this.query.limit(resultsPerPage).skip(skip);
+        return this;
+    }
 }
 
 export default APIFunctionality;
