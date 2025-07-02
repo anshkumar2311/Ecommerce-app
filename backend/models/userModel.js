@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcryptjs from "bcryptjs";
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -40,7 +41,17 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date
-}, {timestamps:true})
+}, { timestamps: true })
+
+// Encrypting password before saving
+userSchema.pre("save", async function(next) {
+    this.password = await bcryptjs.hash(this.password, 10);
+    //1st - updating profile (name, email, image) -- hashed password will hashed again ❌
+    //2nd - changing password -- hashed password will hashed again ✅
+    if(!this.isModified("password")) {
+        return next();
+    }
+})
 
 
 export default mongoose.model("User", userSchema);
