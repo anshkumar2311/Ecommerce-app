@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -44,14 +45,15 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpire: Date
 }, { timestamps: true })
 
-// Encrypting password before saving
-userSchema.pre("save", async function(next) {
-    this.password = await bcryptjs.hash(this.password, 10);
+// Encrypting password before saving , Password hashing
+userSchema.pre("save", async function (next) {
     //1st - updating profile (name, email, image) -- hashed password will hashed again ❌
     //2nd - changing password -- hashed password will hashed again ✅
     if(!this.isModified("password")) {
         return next();
     }
+    this.password = await bcryptjs.hash(this.password, 10);
+    next();
 })
 
 // JWT token
@@ -64,6 +66,14 @@ userSchema.methods.getJWTToken = function () {
 // verify password
 userSchema.methods.verifyPassword = async function (userEnteredPassword) {
     return await bcryptjs.compare(userEnteredPassword, this.password);
+}
+
+// Generate password reset token
+userSchema.methods.generatePasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(20).toString('hex'); //first we generate a random token then convert it to hex string
+    this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex"); //hash the token using sha256 and converting to hex string
+    this.resetPasswordExpire = Date.now() + 30 * 60 * 1000 // token will expire in 30 minutes
+    return resetToken; //return the plain token to send to the user via email
 }
 
 export default mongoose.model("User", userSchema);
