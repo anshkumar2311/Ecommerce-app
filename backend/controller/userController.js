@@ -164,4 +164,28 @@ export const updateProfile = handleAsyncError(async (req, res, next) => {
         message: "Profile updated successfully",
         user
     });
-})
+});
+
+
+
+//Admin- Get user information
+export const getUsersList = handleAsyncError(async (req, res, next) => {
+   const users = await User.find();
+    res.status(200).json({
+        success: true,
+        users
+    });
+});
+
+
+//Admin- Get Single user information
+export const getSingleUser = handleAsyncError(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+        return next(new HandleError(`User doesn't exists with this id: ${req.params.id}`, 404));
+    }
+    res.status(200).json({
+        success: true,
+        user
+    })
+});
