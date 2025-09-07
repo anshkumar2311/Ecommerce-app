@@ -1,0 +1,122 @@
+.ordersList-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 70vh;
+    margin-top: 70px;
+  }
+  
+  .ordersList-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .ordersList-table-container {
+    margin-top: 10px;
+    overflow-x: auto;
+  }
+  
+  .ordersList-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ordersList-table th,
+  .ordersList-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .ordersList-table th {
+    background-color: var(--bg-secondary);
+    color: #fff;
+  }
+  
+  .ordersList-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .order-status.processing {
+    background-color: rgba(255, 0, 0, 0.1); 
+    color: red;
+  }
+  
+  .order-status.delivered {
+    background-color: rgba(0, 255, 0, 0.1); 
+    color: green;
+  }
+  
+
+  .action-icon {
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .edit-icon {
+    color: var(--primary-main);
+  }
+  
+  .edit-icon:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  .delete-icon {
+    color: #f7364a;
+    border: none;
+  }
+  
+  .delete-icon:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #f3253a;
+  }
+  
+
+  @media (max-width: 768px) {
+    .ordersList-table {
+      font-size: 14px;
+    }
+  
+    .ordersList-table th,
+    .ordersList-table td {
+      padding: 8px;
+    }
+  
+    .ordersList-table th {
+      font-size: 16px;
+    }
+  
+    .action-icon {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ordersList-title {
+      font-size: 20px;
+    }
+  
+    .ordersList-table th,
+    .ordersList-table td {
+      padding: 6px;
+    }
+  
+    .ordersList-table th {
+      font-size: 14px;
+    }
+  
+    .action-icon {
+      font-size: 16px;
+    }
+  }
+  

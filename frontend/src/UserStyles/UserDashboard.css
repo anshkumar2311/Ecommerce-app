@@ -1,0 +1,113 @@
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 15px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    margin-right: 40px;
+    margin-bottom: 5px;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.profile-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.menu-options {
+    padding: 15px;
+    border-radius: 8px;
+    position: fixed;
+    top: 55px; 
+    right: 20px;
+    width: 150px;
+    z-index: 1000;
+}
+
+.menu-option-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-main);
+    color: var(--text-light);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.menu-option-btn:hover {
+    background-color: var(--primary-light);
+    color: var(--text-dark);
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+    z-index: 999;
+}
+
+.overlay.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0s 0s;
+}
+.cart-not-empty {
+    background-color: var(--primary-light);
+    color: var(--text-dark);
+  }
+@media (max-width: 1400px) {
+  
+    .profile-header {
+        right: -50px;
+    }
+    .profile-name {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--text-light);
+    }
+    .menu-options {
+        top: 50px; 
+        right: -10px;
+    }
+  }
+  @media (max-width: 780px) {
+  
+
+    .profile-header {
+        top: 5px;
+        right: -40px;
+    }
+    
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        
+    }
+    
+  
+    
+  }

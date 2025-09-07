@@ -1,0 +1,98 @@
+.shipping-form-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+   }
+   
+   .shipping-form-header {
+    color: var(--bg-secondary);
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+   }
+   
+   .shipping-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+   }
+   
+   @media (max-width: 768px) {
+    form {
+      grid-template-columns: 1fr;
+    }
+   }
+   
+   .shipping-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+   }
+   
+   .shipping-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+   }
+   
+   .shipping-form-group label {
+    color: var(--primary-dark);
+    font-size: 15px;
+    font-weight: 500;
+   }
+   
+   .shipping-form-group input,
+   .shipping-form-group select {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--bg-secondary);
+    font-size: 15px;
+    transition: all 0.2s ease;
+   }
+   
+   .shipping-form-group input:focus,
+   .shipping-form-group select:focus {
+    outline: none;
+    border-color: var(--primary-main);
+    box-shadow: 0 0 0 3px rgba(108, 91, 123, 0.2);
+   }
+   
+   .shipping-form-group input::placeholder {
+    color: var( --bg-secondary);
+    opacity: 0.7;
+   }
+   
+   .shipping-submit-btn {
+    grid-column: 1 / -1;
+    padding: 14px;
+    background: var(--primary-main);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-top: 20px;
+   }
+   
+   .shipping-submit-btn:hover {
+    background: var(--primary-dark);
+   }
+   
+
+   select::-webkit-scrollbar {
+    width: 8px;
+   }
+   
+   select::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+   }
+   
+   select::-webkit-scrollbar-thumb {
+    background: var(--primary-dark);
+    border-radius: 4px;
+   }

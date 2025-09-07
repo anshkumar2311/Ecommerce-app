@@ -1,0 +1,66 @@
+.payment-success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 1.5rem;
+    font-family: 'Arial', sans-serif;
+  }
+  .success-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .checkmark {
+    width: 20px;
+    height: 40px;
+    border: solid white;
+    border-width: 0 6px 6px 0;
+    transform: rotate(45deg); 
+    position: absolute;
+    bottom: 18px; 
+    left: 28px;
+  }
+  
+  .success-content h1 {
+    font-size: 2rem;
+    color: #28a745;
+    margin-bottom: 0.5rem;
+  }
+  
+  .success-para {
+    font-size: 1rem;
+    color: #6c757d;
+    margin:2rem 0;
+  }
+  
+  .explore-btn {
+    padding: 0.7rem 1.5rem;
+    background-color:var(--bg-secondary);
+    color:var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top:20px;
+    transition: all 0.3s ease;
+  }
+  
+  .explore-btn:hover {
+    background-color: var(--bg-primary);
+  }
+  

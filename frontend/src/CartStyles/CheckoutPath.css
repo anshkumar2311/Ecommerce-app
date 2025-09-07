@@ -1,0 +1,54 @@
+.checkoutPath {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 6rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .checkoutPath-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #9ca3af;
+    position: relative;
+    flex: 1;
+  }
+
+  .checkoutPath-step[completed="true"] {
+    color: #10b981;
+  }
+  
+  .checkoutPath-icon {
+    background: #f3f4f6;
+    padding: 0.75rem;
+    border-radius: 50%;
+  }
+  
+  .checkoutPath-step[active="true"] .checkoutPath-icon {
+    background: #dbeafe;
+  }
+  
+  .checkoutPath-step[completed="true"] .checkoutPath-icon {
+    background: #d1fae5;
+  }
+  
+  .checkoutPath-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .checkoutPath-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 60%;
+    width: 100%;
+    height: 2px;
+    background: #e5e7eb;
+  }
+  
+  .checkoutPath-step[completed="true"]::after {
+    background: #10b981;
+  }

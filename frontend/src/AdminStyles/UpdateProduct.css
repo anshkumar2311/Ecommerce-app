@@ -1,0 +1,114 @@
+
+.update-product-wrapper {
+    width: 700px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .update-product-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .update-product-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .update-product-form > div {
+    margin-bottom: 24px;
+  }
+  
+  .update-product-form label {
+    display: block;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--bg-secondary);
+    margin-bottom: 8px;
+  }
+  
+  .update-product-input,
+  .update-product-textarea {
+    width: 90%;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin:0 0 30px 0;
+  }
+  .update-product-select{
+    width: 94%;
+    padding: 12px 16px;
+    margin:0 auto 30px;
+  }
+  .update-product-textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  .update-product-file-wrapper {
+    width: 88%;
+    padding: 16px;
+  }
+  
+  .update-product-file-input {
+    width: 100%;
+    max-width: 720px;
+    padding: 12px;
+    border: 2px dashed #e5e7eb;
+    border-radius: 8px;
+  }
+  
+  .update-product-preview-wrapper,
+  .update-product-old-images-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 90%;
+    max-width: 720px;
+  }
+  
+  .update-product-preview-image,
+  .update-product-old-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .update-product-submit-btn {
+    width: 100%;
+    max-width: 720px;
+    height: 48px;
+    background: var(--bg-secondary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 840px) {
+    .update-product-wrapper {
+      width: 95%;
+      padding: 24px;
+    }
+    
+    .update-product-preview-wrapper,
+    .update-product-old-images-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .update-product-preview-image,
+    .update-product-old-image {
+      width: 140px;
+      height: 140px;
+    }
+  }
