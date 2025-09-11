@@ -39,7 +39,7 @@ function Rating({ value, onRatingChange, disabled }) {
                     onMouseEnter={() => handleMouseEnter}
                     onMouseLeave={() => handleMouseLeave}
                     onClick={() => handleClick}
-                    style={{pointerEvents: disabled ? 'none' : 'auto'}}
+                    style={{ pointerEvents: disabled ? 'none' : 'auto' }}
                 >★</span>
             )
         }

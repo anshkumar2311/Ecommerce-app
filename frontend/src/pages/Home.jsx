@@ -19,10 +19,10 @@ function Home() {
     React.useEffect(() => {
         if (error) {
             const msg = typeof error === "string" ? error : error.error || error.message || "Something went wrong";
-            toast.error(msg, {position:'top-center', autoClose:3000});
+            toast.error(msg, { position: 'top-center', autoClose: 3000 });
             dispatch(removeErrors())
         }
-    },[dispatch, error])
+    }, [dispatch, error])
     return (
         <>
             {loading ? (<Loader />) : (<>

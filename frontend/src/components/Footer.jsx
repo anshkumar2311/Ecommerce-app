@@ -39,8 +39,8 @@ function Footer() {
             <div className="footer-bottom">
                 <p>&copy; {(new Date().getFullYear())} Ansh Kumar. All rights reserved.</p>
             </div>
-      </footer>
-  )
+        </footer>
+    )
 }
 
 export default Footer
