@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getProduct = createAsyncThunk('product/getProduct', async (_, { rejectWithValue }) => {
+export const getProduct = createAsyncThunk('product/getProduct', async ({keyword}, { rejectWithValue }) => {
     try {
-        const link = '/api/v1/products';
+        const link = keyword ? `/api/v1/products?keyword=${encodeURIComponent(keyword)}` : '/api/v1/products';
         const {data} = await axios.get(link);
         console.log('Response', data);
         return data;
@@ -52,6 +52,7 @@ const productSlice = createSlice({
         .addCase(getProduct.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload || 'Something went wrong';
+            state.products = [];
         })
 
         builder.addCase(getProductDetails.pending, (state) => {

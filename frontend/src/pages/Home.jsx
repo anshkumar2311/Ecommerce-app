@@ -14,7 +14,7 @@ function Home() {
     const { loading, error, products, productCount } = useSelector((state) => state.product);
     const dispatch = useDispatch();
     React.useEffect(() => {
-        dispatch(getProduct());
+        dispatch(getProduct({ keyword: "" }));
     }, [dispatch])
     React.useEffect(() => {
         if (error) {
