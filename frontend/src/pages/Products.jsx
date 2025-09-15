@@ -10,18 +10,22 @@ import Product from '../components/Product'
 import { getProduct, removeErrors } from '../features/products/productSlice'
 import '../pageStyles/Products.css'
 import NoProducts from '../components/NoProducts'
+import Pagination from '../components/Pagination'
+import { useNavigate } from 'react-router-dom'
 
 function Products() {
-    const { loading, error, products } = useSelector((state) => state.product);
+    const { loading, error, products, productCount, resultsPerPage } = useSelector((state) => state.product);
     const dispatch = useDispatch();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const keyword = searchParams.get('keyword');
-    console.log(keyword);
+    const pageFromURL = parseInt(searchParams.get('page'), 10) || 1;
+    const [currentPage, setCurrentPage] = React.useState(pageFromURL);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
-        dispatch(getProduct({ keyword }));
-    }, [dispatch, keyword])
+        dispatch(getProduct({ keyword, page:currentPage }));
+    }, [dispatch, keyword, currentPage]);
     React.useEffect(() => {
         if (error) {
             const msg = typeof error === "string" ? error : error.error || error.message || "Something went wrong";
@@ -29,6 +33,19 @@ function Products() {
             dispatch(removeErrors())
         }
     }, [dispatch, error])
+    const handlePageChange = (page) => {
+        if (page !== currentPage) {
+            setCurrentPage(page);
+            const newSearchParams = new URLSearchParams(location.search);
+            if (page === 1) {
+                newSearchParams.delete('page');
+            }
+            else {
+                newSearchParams.set('page', page);
+            }
+            navigate(`?${newSearchParams.toString()}`);
+        }
+    }
     return (
         <>
             {loading ? (<Loader />) : (<>
@@ -45,6 +62,7 @@ function Products() {
                                 <Product key={product._id} product={product} />
                             ))}
                         </div>) : (<NoProducts keyword={keyword} />)}
+                        <Pagination currentPage={currentPage} onPageChange={handlePageChange} />
                     </div>
                 </div>
                 <Footer />
